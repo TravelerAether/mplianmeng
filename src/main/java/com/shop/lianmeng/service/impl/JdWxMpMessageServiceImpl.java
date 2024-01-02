@@ -31,6 +31,11 @@ public class JdWxMpMessageServiceImpl implements WxMpMessageService {
 
     @Override
     public String handle(String content) {
+        
+        String couponLink = getCouponLink(content);
+        if(ObjectUtil.isNotEmpty(couponLink)){
+            content = couponLink;
+        }
         return getClickLink(content);
         
     }

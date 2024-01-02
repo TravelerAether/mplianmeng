@@ -101,8 +101,7 @@ public class LianMengService {
         wxMpXmlOutTextMessage.setFromUserName(inMessage.getToUser());
         wxMpXmlOutTextMessage.setCreateTime(System.currentTimeMillis() / 1000);
          return wxMpXmlOutTextMessage.toXml();
-        
-//        return wxMpXmlOutNewsMessage.toXml();
+
     }
 
 
