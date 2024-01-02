@@ -1,0 +1,11 @@
+wx:
+  mp:
+    appid: # 微信公众号appid
+    secret: # 微信公众号secret
+    token: # 微信公众号token
+jd:
+  accessToken: # 京东联盟 accessToken
+  appKey: # 京东联盟 appKey
+  appSecret: # 京东联盟 appSecret
+  serverUrl: https://api.jd.com/routerjson
+  siteId: # 京东联盟 站点id
