@@ -15,5 +15,6 @@ public interface WxMpMessageService {
      * @return
      */
     String handle(String content) ;
-
+    
+    
 }

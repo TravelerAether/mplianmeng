@@ -6,8 +6,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
+import me.chanjar.weixin.mp.bean.message.WxMpXmlOutNewsMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutTextMessage;
-import me.chanjar.weixin.mp.util.xml.XStreamTransformer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,13 +83,26 @@ public class LianMengService {
         String valueByKey = MessageHandleEnum.getValueByKey(content);
         WxMpMessageService wxMpMessageService = wxMpMessageServiceMap.get(valueByKey);
         String result = wxMpMessageService.handle(content);
-
+        
+        WxMpXmlOutNewsMessage wxMpXmlOutNewsMessage = new WxMpXmlOutNewsMessage();
+        wxMpXmlOutNewsMessage.setToUserName(inMessage.getFromUser());
+        wxMpXmlOutNewsMessage.setFromUserName(inMessage.getToUser());
+        wxMpXmlOutNewsMessage.setCreateTime(System.currentTimeMillis() / 1000);
+        
+        WxMpXmlOutNewsMessage.Item item = new WxMpXmlOutNewsMessage.Item();
+        item.setDescription(result);
+        wxMpXmlOutNewsMessage.addArticle(item);
+        
+        
+        
         WxMpXmlOutTextMessage wxMpXmlOutTextMessage = new WxMpXmlOutTextMessage();
         wxMpXmlOutTextMessage.setContent(result);
         wxMpXmlOutTextMessage.setToUserName(inMessage.getFromUser());
         wxMpXmlOutTextMessage.setFromUserName(inMessage.getToUser());
         wxMpXmlOutTextMessage.setCreateTime(System.currentTimeMillis() / 1000);
-        return XStreamTransformer.toXml(WxMpXmlOutTextMessage.class, wxMpXmlOutTextMessage);
+         return wxMpXmlOutTextMessage.toXml();
+        
+//        return wxMpXmlOutNewsMessage.toXml();
     }
 
 
