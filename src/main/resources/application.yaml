@@ -1,0 +1,11 @@
+wx:
+  mp:
+    appid: wx2d7f3be2f5d0c39b
+    secret: 815460e7d5a768f748bde47b80a90bdf
+    token: wxliqichao
+jd:
+  accessToken: bcde099e5ee6209ec16b5bde3af797ecdaa3f4c965299606d87d455963cd3bab91afc71e1ef20b82
+  appKey: 19eeaec0ff33ca8f993b21f3e941bcbf
+  appSecret: c7d7fba134a0494f9e73a0c466a63371
+  serverUrl: https://api.jd.com/routerjson
+  siteId: 4101193195
